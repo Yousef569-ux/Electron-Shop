@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Electron Shop</title>
+<link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+<div id="Login-Page">
+<h2>Login</h2>
+<form id="loginForm">
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" id="email" placeholder="Email" required>
+</div>
+<div class="form-group">
+<label for="password">Password</label>
+<input type="password" id="password" placeholder="Password" required>
+</div>
+<button type="submit">Login</button>
+<div style="display: flex;"><input type="checkbox" id="Remember"><p>-Remember Me</p></div>
+<p>Don't have an account? <a href="register.html">Register</a></p>
+</form>
+<div id="message"></div>
+</div>
+<div id="Shop-Page" style="display: none;">
+<h1 id="NameofU"></h1><h1 align="center">Welcome To<br><span style="color: gold;">Electron Shop</span></h1>
+<input type="file" id="upload-photo" accept="image/*" style="display: none;">
+
+<label for="upload-photo">
+  <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile" style="position: absolute; top: 5%; right: 10px; width: 150px; height: 150px; border-radius: 50%; cursor: pointer; border: 3px solid #ccc; object-fit: cover;">
+</label>
+<h2>🛒
+  <button id="Cart-Buttons" onclick="showCart()">The Cart<span class="cart-count" id="cartCount">0</span></button>
+  <button id="Addp-Button" onclick="addPro()">Add Product</button>
+</h2>
+
+<!--1. صفحة المنتجات-->
+<div id="productsPage" class="page active">
+  <div class="products" id="products"></div>
+</div>
+
+<!-- 2. صفحة تفاصيل المنتج -->
+<div id="detailsPage" class="page">
+  <button onclick="showProducts()">Back</button>
+  <h2 id="pName"></h2>
+  <img id="pImg" width="300">
+  <h3 id="pPrice"></h3>
+  <h4>CPU:<span id="CPU" style="font: bold;"></span></h4>
+  <h4>features:</h4>
+  <ul id="pFeatures"></ul>
+  <button onclick="addToCart()">ADD TO CART</button>
+</div>
+
+<!-- 3. صفحة السلة -->
+<div id="cartPage" class="page">
+  <button onclick="showProducts()">Back to Shop</button>
+  <h2>The Shopping Cart</h2>
+  <div id="cartItems"></div>
+<!--  <label for="prni">Product Name</label>
+  <input type="text" placeholder="Enter Product Name" id="prni">
+  <label for="prprice">Product Price</label>
+  <input type="text" inputmode="numeric" placeholder="Enter Product Price" id="prprice">
+  <label for="primg" style="border: 4px solid white;border-width: -5px;cursor: pointer;">Product Image</label>
+  <input type="file" accept="image/*" id="primg" style="display: none;">
+  <button id="addproduct">Add Product</button>-->
+  <h3 id="total"></h3>
+  <button onclick="checkout()">Checkout</button>
+  <button onclick="clearCart()" style="background:#dc3545">Clear Cart</button>
+</div>
+</div>
+<div id="admin-section" class="admin" style="display: none;">
+  <button onclick="backTo()">Back to Shop</button>
+  <h3>➕ إضافة منتج جديد</h3>
+  <input type="text" id="name" placeholder="اسم المنتج">
+  <input type="text" id="priceIn" placeholder="السعر - مثال: 250 جنيه">
+  <input type="file" id="imgFile" accept="image/*" onchange="previewImage(event)">
+  <img id="preview" class="preview">
+  <textarea id="features" placeholder="المميزات - كل ميزة في سطر جديد"></textarea>
+    <input type="text" id="cpuname" placeholder="(إذا هو جهاز)مواصفات المعالج\اسمه">
+  <button onclick="addProduct()">أضف المنتج</button>
+</div>
+    <audio src="pmo.ogg" id="sndt"></audio>
+    </body>
+
+    <script src="script.js"></script>
+</html>
